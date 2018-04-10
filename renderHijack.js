@@ -11,7 +11,11 @@ import React from 'react';
  * 第16行 `const WrappedComponent = class extends Component {`
  * 第44行 `const renderResult = super.render();`
  */
+
+const getDisplayName = (WarpedComponent) => WarpedComponent.displayName || WarpedComponent.name || 'Component';
+
 const MyContainer = (WarpedComponent) => class extends WarpedComponent {
+	static displayName = `HOC${getDisplayName(WarpedComponent)}`
 	render() {
 		const tree = super.render();
 		const oldStyle = tree.props.style || {};
