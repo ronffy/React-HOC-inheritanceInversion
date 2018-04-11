@@ -1,19 +1,12 @@
 import React from 'react';
 
+// 添加displayName，方便后续定位和调试
+const getDisplayName = (WarpedComponent) => WarpedComponent.displayName || WarpedComponent.name || 'Component';
+
 /**
  * react反向继承的渲染劫持实例
  * @author whr
  */
- 
- /**
- * 应用案例：react-css-modules 
- * @see https://github.com/gajus/react-css-modules/blob/master/src/extendReactClass.js
- * 第16行 `const WrappedComponent = class extends Component {`
- * 第44行 `const renderResult = super.render();`
- */
-
-const getDisplayName = (WarpedComponent) => WarpedComponent.displayName || WarpedComponent.name || 'Component';
-
 const MyContainer = (WarpedComponent) => class extends WarpedComponent {
 	static displayName = `HOC${getDisplayName(WarpedComponent)}`
 	render() {
