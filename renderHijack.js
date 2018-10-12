@@ -5,7 +5,7 @@ const getDisplayName = (WarpedComponent) => WarpedComponent.displayName || Warpe
 
 /**
  * react反向继承的渲染劫持实例
- * @author whr
+ * @author ronffy
  */
 const MyContainer = (WarpedComponent) => class extends WarpedComponent {
 	static displayName = `HOC${getDisplayName(WarpedComponent)}`
